@@ -451,81 +451,45 @@
 
             // Load OBJ model - alternate between point cloud and mesh
             const loader = new THREE.OBJLoader();
-            loader.load(modelPath, function (object) {
-              object.traverse(function (child) {
+            loader.load(modelPath, function(object) {
+              object.traverse(function(child) {
                 if (child.isMesh) {
-
-                  //-------------------------------------
-                  // 🔵 保证所有 geometry 转为 BufferGeometry
-                  //-------------------------------------
-                  let geo = child.geometry;
-                  if (!(geo instanceof THREE.BufferGeometry)) {
-                    geo = new THREE.BufferGeometry().fromGeometry(geo);
-                  }
-
-                  //-------------------------------------
-                  // 🔵 是否是点云（第1/3/5/7个）
-                  //-------------------------------------
-                  const isPointCloud = i % 2 === 1;
-
+                  // Check if this should be a point cloud (odd positions) or mesh (even positions)
+                  const isPointCloud = i % 2 === 1; // 1,3,5,7 are point clouds
+                  
                   if (isPointCloud) {
-                    // ======== POINT CLOUD MATERIAL =========
-                    const positions = geo.getAttribute("position");
+                    // Convert mesh to point cloud
+                    const geometry = child.geometry;
                     const pointGeometry = new THREE.BufferGeometry();
-                    pointGeometry.setAttribute("position", positions);
-
+                    
+                    // Use positions from original geometry
+                    pointGeometry.setAttribute('position', geometry.getAttribute('position'));
+                    
+                    // Create point cloud material
                     const pointMaterial = new THREE.PointsMaterial({
-                      color: 0x3a6aff,
-                      size: 0.015,
+                      color: 0x2194ce,      // Blue color for point clouds
+                      size: 0.02,           // Point size
                       sizeAttenuation: true
                     });
-
+                    
                     const pointCloud = new THREE.Points(pointGeometry, pointMaterial);
                     scene.add(pointCloud);
-                    pointClouds[i] = pointCloud;   // 保存引用
-
+                    pointClouds.push(pointCloud);
+                    
                   } else {
-                    // ======== MESH MATERIAL (SOLID) =========
-                    const solidMaterial = new THREE.MeshPhongMaterial({
-                      color: 0xd8d8d8,
-                      specular: 0x111111,
-                      shininess: 25,
+                    // Keep as mesh with improved material
+                    child.material = new THREE.MeshPhongMaterial({ 
+                      color: 0xd8d8d8,      // Light gray for meshes
+                      shininess: 20,
+                      specular: 0xffffff,
                       side: THREE.DoubleSide
                     });
-
-                    const mesh = new THREE.Mesh(geo, solidMaterial);
-                    scene.add(mesh);
-                    meshes[i] = mesh;
-
-                    // ======== ADD WIREFRAME OVERLAY =========
-                    const wireframeMaterial = new THREE.MeshBasicMaterial({
-                      color: 0x000000,
-                      wireframe: true
-                    });
-
-                    const wireframe = new THREE.Mesh(geo, wireframeMaterial);
-                    mesh.add(wireframe);
+                    scene.add(child);
+                    meshes.push(child);
                   }
                 }
               });
-
-              //-----------------------------------------
-              // 🔵 normalize model (center + scale)
-              //-----------------------------------------
-              const box = new THREE.Box3().setFromObject(object);
-              const center = box.getCenter(new THREE.Vector3());
-              const size = box.getSize(new THREE.Vector3());
-
-              object.position.x = -center.x;
-              object.position.y = -center.y;
-              object.position.z = -center.z;
-
-              const maxDim = Math.max(size.x, size.y, size.z);
-              const scale = 2.0 / maxDim;
-              object.scale.multiplyScalar(scale);
-
-            });
-                          
+              
               // Center and scale the model
               const box = new THREE.Box3().setFromObject(object);
               const center = box.getCenter(new THREE.Vector3());
