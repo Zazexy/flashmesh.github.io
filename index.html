@@ -511,16 +511,49 @@
           }
 
           function processPLYGeometry(geometry, scene, isPointCloud, index) {
-            const pointMaterial = new THREE.PointsMaterial({
-              color: 0x6a65e3,
-              size: 0.02,
-              sizeAttenuation: true
-            });
-            
-            const pointCloud = new THREE.Points(geometry, pointMaterial);
-            scene.add(pointCloud);
-            pointClouds[index] = pointCloud;
             centerAndScaleGeometry(geometry);
+
+            const positions = geometry.getAttribute('position');
+            const count = positions.count;
+
+            // Max point count to render
+            const maxInstances = 20000;
+            const step = Math.max(1, Math.floor(count / maxInstances));
+
+            // radius of sphere
+            const sphereRadius = 0.015;
+            const sphereGeometry = new THREE.SphereGeometry(sphereRadius, 16, 16);
+            const sphereMaterial = new THREE.MeshPhongMaterial({
+              color: 0x6a65e3,
+              shininess: 30
+            });
+
+            const instanceCount = Math.ceil(count / step);
+            const instancedMesh = new THREE.InstancedMesh(
+              sphereGeometry,
+              sphereMaterial,
+              instanceCount
+            );
+
+            const dummy = new THREE.Object3D();
+            let instanceIndex = 0;
+            for (let i = 0; i < count; i += step) {
+              const x = positions.getX(i);
+              const y = positions.getY(i);
+              const z = positions.getZ(i);
+
+              dummy.position.set(x, y, z);
+              dummy.rotation.set(0, 0, 0);  
+              dummy.scale.set(1, 1, 1);
+              dummy.updateMatrix();
+
+              instancedMesh.setMatrixAt(instanceIndex, dummy.matrix);
+              instanceIndex++;
+            }
+            instancedMesh.instanceMatrix.needsUpdate = true;
+
+            scene.add(instancedMesh);
+            pointClouds[index] = instancedMesh;
           }
 
           function centerAndScaleObject(object) {
@@ -586,19 +619,19 @@
             renderer.setSize(canvas.clientWidth, canvas.clientHeight);
             renderers.push(renderer);
 
-            // Lighting - 更均匀的光照设置
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // 增加环境光强度
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // environment light
             scene.add(ambientLight);
 
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3); // 减少主光源强度
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3); // main light
             directionalLight.position.set(1, 1, 1);
             scene.add(directionalLight);
 
-            const backLight = new THREE.DirectionalLight(0xffffff, 0.2); // 减少背光强度
+            const backLight = new THREE.DirectionalLight(0xffffff, 0.2); // back light
             backLight.position.set(-1, -0.5, -1);
             scene.add(backLight);
 
-            const fillLight = new THREE.DirectionalLight(0xffffff, 0.2); // 减少填充光强度
+            const fillLight = new THREE.DirectionalLight(0xffffff, 0.2); // fill light
             fillLight.position.set(-0.5, 0.5, 0.5);
             scene.add(fillLight); 
 
