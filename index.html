@@ -24,6 +24,9 @@
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Story+Script&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -219,7 +222,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img id="teaser" src="./static/teasers/teaser.jpg" alt="FlashMesh Teaser Image" style="width: 100%; height: auto; max-height: 400px; object-fit: contain;">
+      <img id="teaser" src="./static/teasers/teaser.png" alt="FlashMesh Teaser Image" style="width: 100%; height: auto; max-height: 800px; object-fit: contain;">
       <!-- <h2 class="subtitle has-text-centered">
         <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
         free-viewpoint
@@ -245,6 +248,92 @@
     </div>
   </div>
 </section>
+<div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">⚡2x Speed up</h2>
+      </div>
+    </div>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="has-text-centered" style="margin-bottom: 20px;">
+        <div class="buttons are-medium is-centered case-buttons-container" style="gap: 8px;">
+          <button class="button case-button is-primary" data-case="case1" style="background: #bdbe8e; color: #2d1144; font-family: 'Story Script', cursive; font-size: 1.2em; font-weight: bold; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">Case 1</button>
+          <button class="button is-light case-button" data-case="case2" style="background: linear-gradient(to top, #2d1144, #bdbe8e); color: white; font-family: 'Story Script', cursive; font-size: 1.2em; font-weight: bold; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">Case 2</button>
+          <button class="button is-light case-button" data-case="case3" style="background: linear-gradient(to top, #2d1144, #bdbe8e); color: white; font-family: 'Story Script', cursive; font-size: 1.2em; font-weight: bold; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">Case 3</button>
+          <button class="button is-light case-button" data-case="case4" style="background: linear-gradient(to top, #2d1144, #bdbe8e); color: white; font-family: 'Story Script', cursive; font-size: 1.2em; font-weight: bold; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">Case 4</button>
+          <button class="button is-light case-button" data-case="case5" style="background: linear-gradient(to top, #2d1144, #bdbe8e); color: white; font-family: 'Story Script', cursive; font-size: 1.2em; font-weight: bold; border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">Case 5</button>
+        </div> 
+      </div> 
+
+      
+      <div class="image-container">
+        <img id="case-image" src="./static/demo/demo_0_specular.gif" alt="FlashMesh Demo Case 1" style="width: 100%; height: auto; max-height: 800px; object-fit: contain; display: block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Case switching functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const caseButtons = document.querySelectorAll('.case-button');
+    const caseImage = document.getElementById('case-image');
+    
+    // 默认选中Case 1
+    const defaultCaseButton = document.querySelector('[data-case="case1"]');
+    if (defaultCaseButton) {
+      defaultCaseButton.classList.remove('is-light');
+      defaultCaseButton.classList.add('is-primary');
+      defaultCaseButton.style.background = '#bdbe8e';
+      defaultCaseButton.style.color = '#2d1144';
+    } 
+    
+    // Define image paths for each case
+    const caseImages = {
+      case1: './static/demo/demo_0_specular.gif',
+      case2: './static/demo/demo_1_specular.gif',
+      case3: './static/demo/demo_2_specular.gif',
+      case4: './static/demo/demo_3_specular.gif',
+      case5: './static/demo/demo_4_specular.gif'
+    };
+
+    // Define alt texts for each case
+    const caseAlts = {
+      case1: 'FlashMesh Demo Case 1',
+      case2: 'FlashMesh Demo Case 2', 
+      case3: 'FlashMesh Demo Case 3',
+      case4: 'FlashMesh Demo Case 4',
+      case5: 'FlashMesh Demo Case 5'
+    };
+
+    
+    caseButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const caseName = this.getAttribute('data-case');
+        
+        // Update active button styling
+        caseButtons.forEach(btn => {
+          btn.classList.remove('is-primary');
+          btn.classList.add('is-light');
+          // Reset to original gradient style for unselected buttons
+          btn.style.background = 'linear-gradient(to top, #2d1144, #bdbe8e)';
+          btn.style.color = 'white';
+        });
+        
+        // Apply selected style for current button
+        this.classList.remove('is-light');
+        this.classList.add('is-primary');
+        this.style.background = '#bdbe8e';
+        this.style.color = '#2d1144'; // Dark text color for contrast
+        
+        // Update image source and alt text
+        caseImage.src = caseImages[caseName];
+        caseImage.alt = caseAlts[caseName];
+      });
+    }); 
+  });
+</script> 
 
 
 <!-- <section class="hero teaser">
@@ -300,7 +389,7 @@
   <div class="container is-max-desktop">
     
     <!-- 3D Mesh Visualization. -->
-    <div class="columns is-centered">
+    <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Meshes generated by FlashMesh</h2>
         
@@ -328,7 +417,7 @@
                   Drag to rotate • Scroll to zoom
                 </div>
               </div>
-              <p class="is-size-6" style="margin-top: 10px;">face count: 3000</p>
+              <p class="is-size-6" style="margin-top: 10px;">face count: 9307</p>
             </div>
             
             <!-- Grid Item 3 -->
@@ -352,7 +441,7 @@
                   Drag to rotate • Scroll to zoom
                 </div>
               </div>
-              <p class="is-size-6" style="margin-top: 10px;">face count: 3000</p>
+              <p class="is-size-6" style="margin-top: 10px;">face count: 8440</p>
             </div>
             
             <!-- Grid Item 5 -->
@@ -376,7 +465,7 @@
                   Drag to rotate • Scroll to zoom
                 </div>
               </div>
-              <p class="is-size-6" style="margin-top: 10px;">face count: 3000</p>
+              <p class="is-size-6" style="margin-top: 10px;">face count: 8662</p>
             </div>
             
             <!-- Grid Item 7 -->
@@ -400,7 +489,7 @@
                   Drag to rotate • Scroll to zoom
                 </div>
               </div>
-              <p class="is-size-6" style="margin-top: 10px;">face count: 3000</p>
+              <p class="is-size-6" style="margin-top: 10px;">face count: 8029</p>
             </div>
           </div>
         </div>
@@ -538,7 +627,7 @@
             const step = Math.max(1, Math.floor(count / maxInstances));
 
             // radius of sphere
-            const sphereRadius = 0.015;
+            const sphereRadius = 0.005;
             const sphereGeometry = new THREE.SphereGeometry(sphereRadius, 16, 16);
             const sphereMaterial = new THREE.MeshPhongMaterial({
               color: 0x6a65e3,
@@ -628,7 +717,7 @@
 
             // Camera
             const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-            camera.position.z = 3;
+            camera.position.z = (i % 2 === 0) ? 1 : 2; // Different distances for mesh and point cloud
             cameras.push(camera);
 
             // Renderer
