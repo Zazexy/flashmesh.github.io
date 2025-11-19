@@ -6,7 +6,7 @@
 <p align="center">
     <a href="https://openreview.net/profile?id=~Tingrui_Shen1" target="_blank">Tingrui Shen</a><sup>1*</sup>,
     <a href="https://openreview.net/profile?id=~Yiheng_Zhang1" target="_blank">Yiheng Zhang</a><sup>2*</sup>,
-    <a href="https://openreview.net/profile?id=~Chen_Tang1" target="_blank">Chen Tang</a><sup>1</sup>,
+    <a href="https://openreview.net/profile?id=~Chen_Tang1" target="_blank">Chen Tang</a><sup>1*</sup>,
     <a href="https://openreview.net/profile?id=~Chuan_Ping1" target="_blank">Chuan Ping</a><sup>3</sup>,
     <a href="https://openreview.net/profile?id=~Zixing_Zhao1" target="_blank">Zixing Zhao</a><sup>4</sup>,
     <br>
@@ -29,12 +29,12 @@
 </p>
 
 <div align="center">
-<a href='https://arxiv.org/abs/2503.15265'><img src='https://img.shields.io/badge/arXiv-2503.15265-b31b1b.svg'></a> &nbsp;&nbsp;&nbsp;&nbsp;
+<a href='https://github.com/Graphic-Kiliani/FlashMesh-Faster-and-Better-Autoregressive-Mesh-Synthesis'><img src='https://img.shields.io/badge/arXiv-2503.15265-b31b1b.svg'></a> &nbsp;&nbsp;&nbsp;&nbsp;
 <a href='https://github.com/Graphic-Kiliani/FlashMesh-Faster-and-Better-Autoregressive-Mesh-Synthesis'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;&nbsp;&nbsp;&nbsp;
-<a href='https://www.youtube.com/watch?v=6grL7bSbQ2w'><img src='https://img.shields.io/badge/Youtube-Video-b31b1b.svg'></a>
+<a href='https://github.com/Graphic-Kiliani/FlashMesh-Faster-and-Better-Autoregressive-Mesh-Synthesis'><img src='https://img.shields.io/badge/Youtube-Video-b31b1b.svg'></a>
 </div> 
 <div align="center">
-<img src="./static/teasers/teaser.png" alt="Demo" width="1024px" />
+<img src="./static/teasers/teaser_lightning.jpg" alt="Demo" width="1024px" />
 </div>
 
 This is the repository that contains source code of website for the [FlashMesh](https://github.com/Graphic-Kiliani/FlashMesh-Faster-and-Better-Autoregressive-Mesh-Synthesis).
