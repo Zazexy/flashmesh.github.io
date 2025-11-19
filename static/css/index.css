@@ -2,6 +2,14 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+.section .container {
+  max-width: 1600px;  /* 自己调这个数字就行，比如 1300/1400/1500 */
+}
+
+.abstract-text {
+  font-size: 1.35rem;   /* 字号，比默认稍大一点，自己调 */
+  line-height: 1.8;     /* 行距，保证可读性 */
+}
 
 .footer .icon-link {
     font-size: 25px;

@@ -173,12 +173,12 @@
                 </a>
               </span> -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>arXiv(Coming soon!)</span>
                 </a>
               </span>
               <!-- Video Link. -->
@@ -193,12 +193,12 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code(Coming soon!)</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
@@ -220,37 +220,78 @@
 </section>
 
 <section class="hero teaser">
-  <div class="container is-max-desktop">
     <div class="hero-body">
-      <img id="teaser" src="./static/teasers/teaser.png" alt="FlashMesh Teaser Image" style="width: 100%; height: auto; max-height: 800px; object-fit: contain;">
+      <img id="teaser" src="./static/teasers/teaser_lightning.jpg" alt="FlashMesh Teaser Image" style="width: 100%; height: auto; max-height: 800px; object-fit: contain;">
       <!-- <h2 class="subtitle has-text-centered">
         <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
         free-viewpoint
         portraits.
       </h2> -->
     </div>
-  </div>
 </section>
 
-
-<section class="hero teaser">
-   <div class="columns is-centered has-text-centered">
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Architecture</h2>
-          <div class="hero-body">
-            <img id="teaser" src="./static/architecture/architecture.png" alt="FlashMesh Architecture Image" style="width: 100%; height: auto; max-height: 400px; object-fit: contain;">
-          </div>
-  </div>
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified abstract-text">
+          <p>
+            Autoregressive models can generate high-quality 3D meshes by sequentially producing vertices and faces, but their 
+            token-by-token decoding results in slow inference, limiting practical use in interactive and large-scale applications. 
+            We present <b>FlashMesh</b>, a fast and high-fidelity mesh generation framework that rethinks autoregressive decoding through 
+            a predict-correct-verify paradigm. The key insight is that mesh tokens exhibit strong structural and geometric correlations 
+            that enable confident multi-token speculation. FlashMesh leverages this by introducing a speculative decoding scheme 
+            tailored to the commonly used hourglass transformer architecture, enabling parallel prediction across face, point, 
+            and coordinate levels. Extensive experiments show that FlashMesh achieves up to <b>a 2x  
+            speedup⚡</b> over standard autoregressive models while also <b>improving generation fidelity👍</b>. Our results demonstrate that 
+            structural priors in mesh data can be systematically harnessed to accelerate and enhance autoregressive generation.
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://meshtron.github.io/media/meshtron_turntable.mp4"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+    <!-- Paper video. -->
+    <!--/ Paper video. -->
   </div>
 </section>
 
-<section class="hero teaser">
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Architecture</h2>
+        <div class="hero-body" style="padding-top: 1rem;">
+          <img
+            id="architecture"
+            src="./static/architecture/architecture.png"
+            alt="FlashMesh Architecture Image"
+            style="width: 100%; height: auto; max-height: 600px; object-fit: contain;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <img id="teaser" src="./static/architecture/architecture_gif.gif" alt="FlashMesh Architecture GiF" style="width: 100%; height: auto; max-height: 400px; object-fit: contain;">
     </div>
   </div>
-</section>
+</section> -->
 
 <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
@@ -258,7 +299,6 @@
       </div>
     </div>
 <section class="hero teaser">
-  <div class="container is-max-desktop">
     <div class="hero-body">
       <div class="has-text-centered" style="margin-bottom: 20px;">
         <div class="buttons are-medium is-centered case-buttons-container" style="gap: 8px;">
@@ -275,7 +315,6 @@
         <img id="case-image" src="./static/demo/demo_0_specular.gif" alt="FlashMesh Demo Case 1" style="width: 100%; height: auto; max-height: 800px; object-fit: contain; display: block;">
       </div>
     </div>
-  </div>
 </section>
 
 <script>
@@ -352,43 +391,7 @@
 
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Autoregressive models can generate high-quality 3D meshes by sequentially producing vertices and faces, but their 
-            token-by-token decoding results in slow inference, limiting practical use in interactive and large-scale applications. 
-            We present <b>FlashMesh</b>, a fast and high-fidelity mesh generation framework that rethinks autoregressive decoding through 
-            a predict-correct-verify paradigm. The key insight is that mesh tokens exhibit strong structural and geometric correlations 
-            that enable confident multi-token speculation. FlashMesh leverages this by introducing a speculative decoding scheme 
-            tailored to the commonly used hourglass transformer architecture, enabling parallel prediction across face, point, 
-            and coordinate levels. Extensive experiments show that FlashMesh achieves up to <b>a 2x  
-            speedup⚡</b> over standard autoregressive models while also <b>improving generation fidelity👍</b>. Our results demonstrate that 
-            structural priors in mesh data can be systematically harnessed to accelerate and enhance autoregressive generation.
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
 
-    <!-- Paper video. -->
-    <!-- <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://meshtron.github.io/media/meshtron_turntable.mp4"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Paper video. -->
-    <!-- Paper video. -->
-    <!--/ Paper video. -->
-  </div>
-</section>
 
 
 <!-- <section class="hero teaser">
