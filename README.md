@@ -53,12 +53,15 @@ This is the repository that contains source code of website for the [FlashMesh](
 
 If you find FlashMesh useful for your work please cite: 
 ```
-@article{shen2026flashmesh,
-author = {Shen, Tingrui and Zhang, Yiheng and Tang, Chen and Ping, Chuan and Zhao, Zixing and Wan, Le and Wang, Yuwang and Wang, Ronggang and He, Shengfeng},
-title = {FlashMesh: Faster and Better Autoregressive Mesh Synthesis via Structured Speculation},
-journal = {CVPR},
-year = {2026},
-}
+@misc{shen2025flashmeshfasterbetterautoregressive,
+      title={FlashMesh: Faster and Better Autoregressive Mesh Synthesis via Structured Speculation}, 
+      author={Tingrui Shen and Yiheng Zhang and Chen Tang and Chuan Ping and Zixing Zhao and Le Wan and Yuwang Wang and Ronggang Wang and Shengfeng He},
+      year={2025},
+      eprint={2511.15618},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2511.15618}, 
+    }
 ```
 
 ## Website License
