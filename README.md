@@ -29,7 +29,7 @@
 </p>
 
 <div align="center">
-<a href='https://github.com/Graphic-Kiliani/FlashMesh-Faster-and-Better-Autoregressive-Mesh-Synthesis'><img src='https://img.shields.io/badge/arXiv-2511.15618-B31B1B.svg'></a>
+<a href='https://arxiv.org/abs/2511.15618'><img src='https://img.shields.io/badge/arXiv-2511.15618-B31B1B.svg'></a>
 </div> 
 <div align="center">
 <img src="./static/teasers/teaser_lightning.jpg" alt="Demo" width="1024px" />
