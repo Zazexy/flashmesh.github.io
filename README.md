@@ -29,9 +29,7 @@
 </p>
 
 <div align="center">
-<a href='https://github.com/Graphic-Kiliani/FlashMesh-Faster-and-Better-Autoregressive-Mesh-Synthesis'><img src='https://img.shields.io/badge/arXiv-2503.15265-b31b1b.svg'></a> &nbsp;&nbsp;&nbsp;&nbsp;
-<a href='https://github.com/Graphic-Kiliani/FlashMesh-Faster-and-Better-Autoregressive-Mesh-Synthesis'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;&nbsp;&nbsp;&nbsp;
-<a href='https://github.com/Graphic-Kiliani/FlashMesh-Faster-and-Better-Autoregressive-Mesh-Synthesis'><img src='https://img.shields.io/badge/Youtube-Video-b31b1b.svg'></a>
+<a href='https://github.com/Graphic-Kiliani/FlashMesh-Faster-and-Better-Autoregressive-Mesh-Synthesis'><img src='https://img.shields.io/badge/arXiv-2511.15618-B31B1B.svg'></a>
 </div> 
 <div align="center">
 <img src="./static/teasers/teaser_lightning.jpg" alt="Demo" width="1024px" />
